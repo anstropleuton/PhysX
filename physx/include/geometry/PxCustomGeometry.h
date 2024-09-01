@@ -285,13 +285,16 @@ namespace physx
 /**
 \brief Used in pair with IMPLEMENT_CUSTOM_GEOMETRY_TYPE to overwrite Callbacks::getCustomType() callback.
 */
+#ifndef DECLARE_CUSTOM_GEOMETRY_TYPE
 #define DECLARE_CUSTOM_GEOMETRY_TYPE								\
 	static ::physx::PxCustomGeometry::Type TYPE();					\
 	virtual ::physx::PxCustomGeometry::Type getCustomType() const;
+#endif
 
 /**
 \brief Used in pair with DECLARE_CUSTOM_GEOMETRY_TYPE to overwrite Callbacks::getCustomType() callback.
 */
+#ifndef IMPLEMENT_CUSTOM_GEOMETRY_TYPE
 #define IMPLEMENT_CUSTOM_GEOMETRY_TYPE(CLASS)						\
 ::physx::PxCustomGeometry::Type CLASS::TYPE()						\
 {																	\
@@ -302,5 +305,6 @@ namespace physx
 {																	\
 	return TYPE();													\
 }
+#endif
 
 #endif
